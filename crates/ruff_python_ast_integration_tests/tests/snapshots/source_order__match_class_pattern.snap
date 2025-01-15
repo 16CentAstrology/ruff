@@ -1,0 +1,33 @@
+---
+source: crates/ruff_python_ast_integration_tests/tests/source_order.rs
+expression: trace
+snapshot_kind: text
+---
+- ModModule
+  - StmtMatch
+    - ExprName
+    - MatchCase
+      - PatternMatchClass
+        - ExprName
+        - PatternArguments
+          - PatternMatchValue
+            - ExprNumberLiteral
+          - PatternMatchValue
+            - ExprNumberLiteral
+      - StmtExpr
+        - ExprEllipsisLiteral
+    - MatchCase
+      - PatternMatchClass
+        - ExprName
+        - PatternArguments
+          - PatternKeyword
+            - PatternMatchValue
+              - ExprNumberLiteral
+          - PatternKeyword
+            - PatternMatchValue
+              - ExprNumberLiteral
+          - PatternKeyword
+            - PatternMatchValue
+              - ExprNumberLiteral
+      - StmtExpr
+        - ExprEllipsisLiteral

@@ -1,22 +1,36 @@
-[tool.poetry]
+[project]
 name = "scripts"
-version = "0.1.0"
-description = ""
-authors = ["Charles Marsh <charlie.r.marsh@gmail.com>"]
+version = "0.0.1"
+dependencies = ["stdlibs"]
+requires-python = ">=3.11"
 
-[tool.poetry.dependencies]
-python = ">=3.10,<3.11"
-autoflake = "^1.4"
-flake8 = "^5.0.4"
-matplotlib = "^3.5.3"
-numpy = "^1.23.2"
-pycodestyle = "^2.9.1"
-pyflakes = "^2.5.0"
-pylint = "^2.15.0"
-scipy = "^1.9.1"
+[tool.black]
+line-length = 88
 
-[tool.poetry.dev-dependencies]
+[tool.ruff]
+line-length = 88
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle (error)
+  "F",   # pyflakes
+  "B",   # bugbear
+  "B9",
+  "C4",  # flake8-comprehensions
+  "SIM", # flake8-simplify
+  "I",   # isort
+  "UP",  # pyupgrade
+  "PIE", # flake8-pie
+  "PGH", # pygrep-hooks
+  "PYI", # flake8-pyi
+  "RUF",
+]
+
+ignore = [
+  # only relevant if you run a script with `python -0`,
+  # which seems unlikely for any of the scripts in this directory
+  "B011"
+]
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]

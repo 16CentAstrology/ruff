@@ -1,5 +1,0 @@
-type('')
-type(b'')
-type(0)
-type(0.)
-type(0j)

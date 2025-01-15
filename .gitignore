@@ -1,6 +1,33 @@
-# Local cache
-.ruff_cache
-resources/test/cpython
+# Benchmarking cpython (CONTRIBUTING.md)
+crates/ruff_linter/resources/test/cpython
+# generate_mkdocs.py
+mkdocs.generated.yml
+# check_ecosystem.py
+ruff-old
+github_search*.jsonl
+# update_schemastore.py
+schemastore
+# `maturin develop` and ecosystem_all_check.sh
+.venv*
+# Formatter debugging (crates/ruff_python_formatter/README.md)
+scratch.*
+# Created by `perf` (CONTRIBUTING.md)
+perf.data
+perf.data.old
+# Created by `flamegraph` (CONTRIBUTING.md)
+flamegraph.svg
+# Additional target directories that don't invalidate the main compile cache when changing linker settings,
+# e.g. `CARGO_TARGET_DIR=target-maturin maturin build --release --strip` or
+# `CARGO_TARGET_DIR=target-llvm-lines RUSTFLAGS="-Csymbol-mangling-version=v0" cargo llvm-lines -p ruff --lib`
+/target*
+
+# samply profiles
+profile.json
+
+# tracing-flame traces
+tracing.folded
+tracing-flamechart.svg
+tracing-flamegraph.svg
 
 ###
 # Rust.gitignore
@@ -73,6 +100,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+repos/
 
 # Translations
 *.mo
@@ -181,3 +209,17 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
+.vimspector.json
+
+# Visual Studio Code
+.vscode/
+
+# VIM
+.*.sw?
+.sw?
+
+# Custom re-inclusions for the resolver test cases
+!crates/ruff_python_resolver/resources/test/airflow/venv/
+!crates/ruff_python_resolver/resources/test/airflow/venv/lib
+!crates/ruff_python_resolver/resources/test/airflow/venv/lib/python3.11/site-packages/_watchdog_fsevents.cpython-311-darwin.so
+!crates/ruff_python_resolver/resources/test/airflow/venv/lib/python3.11/site-packages/orjson/orjson.cpython-311-darwin.so

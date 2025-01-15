@@ -1,0 +1,69 @@
+[package]
+name = "ruff_benchmark"
+version = "0.0.0"
+description = "Ruff Micro-benchmarks"
+publish = false
+authors = { workspace = true }
+edition = { workspace = true }
+rust-version = { workspace = true }
+homepage = { workspace = true }
+documentation = { workspace = true }
+repository = { workspace = true }
+license = { workspace = true }
+
+[lib]
+bench = false
+test = false
+doctest = false
+
+[[bench]]
+name = "linter"
+harness = false
+
+[[bench]]
+name = "lexer"
+harness = false
+
+[[bench]]
+name = "parser"
+harness = false
+
+[[bench]]
+name = "formatter"
+harness = false
+
+[[bench]]
+name = "red_knot"
+harness = false
+
+[dependencies]
+codspeed-criterion-compat = { workspace = true, default-features = false, optional = true }
+criterion = { workspace = true, default-features = false }
+rayon = { workspace = true }
+rustc-hash = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+ureq = { workspace = true }
+
+[dev-dependencies]
+ruff_db = { workspace = true }
+ruff_linter = { workspace = true }
+ruff_python_ast = { workspace = true }
+ruff_python_formatter = { workspace = true }
+ruff_python_parser = { workspace = true }
+ruff_python_trivia = { workspace = true }
+red_knot_python_semantic = { workspace = true }
+red_knot_workspace = { workspace = true }
+
+[lints]
+workspace = true
+
+[features]
+codspeed = ["codspeed-criterion-compat"]
+
+[target.'cfg(target_os = "windows")'.dev-dependencies]
+mimalloc = { workspace = true }
+
+[target.'cfg(all(not(target_os = "windows"), not(target_os = "openbsd"), any(target_arch = "x86_64", target_arch = "aarch64", target_arch = "powerpc64")))'.dev-dependencies]
+tikv-jemallocator = { workspace = true }
